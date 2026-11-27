@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Retro Rush</title>
+  <link rel="stylesheet" href="./src/style.css" />
+</head>
+<body>
+  <!-- three.js draws into this canvas. Everything else on the page is plain HTML on top. -->
+  <canvas id="c"></canvas>
+
+  <!-- HUD: the numbers you see while driving. main.js writes into the spans. -->
+  <div id="hud" hidden>
+    <div class="stat"><span class="label">Score</span><span id="score">0</span></div>
+    <div class="stat"><span class="label">Best</span><span id="best">0</span></div>
+    <div class="stat right"><span id="speed">0</span><span class="label">km/h</span></div>
+    <div id="nitro"><div id="nitro-fill"></div><span class="label">Nitro</span></div>
+  </div>
+
+  <!-- Overlay screens: loading, title, pause and game over all reuse this one box. -->
+  <div id="screen" class="screen">
+    <h1>Retro<span>Rush</span></h1>
+    <p id="screen-text">Loading models…</p>
+    <p id="screen-hint" class="hint"></p>
+  </div>
+
+  <!-- Floating "+100 NEAR MISS" messages are appended here. -->
+  <div id="popups"></div>
+
+  <a class="back" href="../">&larr; All games</a>
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>

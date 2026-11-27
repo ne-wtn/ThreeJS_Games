@@ -1,0 +1,21 @@
+{
+  "name": "polyfork-games",
+  "private": true,
+  "type": "module",
+  "description": "Three small three.js games for learning, built with Polyfork low-poly models.",
+  "scripts": {
+    "dev": "vite --open /",
+    "rush": "vite --open /retro-rush/",
+    "orbit": "vite --open /orbit-defense/",
+    "crypt": "vite --open /crypt-crawler/",
+    "build": "vite build",
+    "preview": "vite preview --open /",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "three": "^0.187.0"
+  },
+  "devDependencies": {
+    "vite": "^8.3.8"
+  }
+}

@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Orbit Defense</title>
+  <link rel="stylesheet" href="./src/style.css" />
+</head>
+<body>
+  <canvas id="c"></canvas>
+
+  <div id="hud" hidden>
+    <div class="block">
+      <span class="label">Wave</span>
+      <span id="wave" class="big">1</span>
+    </div>
+    <div class="block">
+      <span class="label">Score</span>
+      <span id="score" class="big">0</span>
+    </div>
+    <div class="bars">
+      <div class="bar"><span class="label">Hull</span><div class="track"><div id="hull" class="fill hull"></div></div></div>
+      <div class="bar"><span class="label">Beacon</span><div class="track"><div id="beacon" class="fill beacon"></div></div></div>
+      <div id="power" class="power" hidden>TRIPLE SHOT <span id="power-time"></span></div>
+    </div>
+  </div>
+
+  <div id="banner" class="banner"></div>
+
+  <div id="screen" class="screen">
+    <h1>Orbit<br /><em>Defense</em></h1>
+    <p id="screen-text">Loading models…</p>
+    <p id="screen-hint" class="hint"></p>
+  </div>
+
+  <a class="back" href="../">&larr; All games</a>
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>

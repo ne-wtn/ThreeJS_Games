@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Crypt Crawler</title>
+  <link rel="stylesheet" href="./src/style.css" />
+</head>
+<body>
+  <canvas id="c"></canvas>
+
+  <div id="hud" hidden>
+    <div class="panel">
+      <div class="row"><span class="label">Health</span><span id="hp-text">20 / 20</span></div>
+      <div class="hp"><div id="hp-fill"></div></div>
+      <div class="row stats">
+        <span><span class="label">Depth</span> <b id="depth">1</b></span>
+        <span><span class="label">Gold</span> <b id="gold">0</b></span>
+        <span><span class="label">Potions</span> <b id="potions">0</b></span>
+      </div>
+      <div class="seed">Seed <span id="seed"></span></div>
+    </div>
+    <ol id="log" class="log"></ol>
+    <div class="help">
+      <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> move / attack &nbsp; <b>click</b> travel &nbsp;
+      <kbd>Space</kbd> wait &nbsp; <kbd>Q</kbd> drink potion
+    </div>
+  </div>
+
+  <div id="floaters"></div>
+
+  <div id="screen" class="screen">
+    <h1>Crypt<br />Crawler</h1>
+    <p id="screen-text">Loading models…</p>
+    <p id="screen-hint" class="hint"></p>
+  </div>
+
+  <a class="back" href="../">&larr; All games</a>
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>

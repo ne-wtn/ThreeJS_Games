@@ -1,0 +1,112 @@
+/* The canvas sits on a CSS gradient sky. The renderer is created with alpha: true,
+   so anything three.js does not draw shows this gradient through. */
+:root {
+  --sky-top: #251846;
+  --sky-mid: #8a3d73;
+  --horizon: #f59a6b;
+  --ink: #fff6e8;
+  --hot: #ff4f7b;
+  --cool: #46e0ff;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  background: linear-gradient(to bottom, var(--sky-top) 0%, var(--sky-mid) 38%, var(--horizon) 62%, var(--horizon) 100%);
+  font-family: "Trebuchet MS", "Segoe UI", system-ui, sans-serif;
+  color: var(--ink);
+  user-select: none;
+}
+
+#c { display: block; width: 100vw; height: 100vh; }
+
+#hud {
+  position: fixed;
+  inset: 16px 20px auto 20px;
+  display: flex;
+  gap: 28px;
+  align-items: flex-start;
+  pointer-events: none;
+  text-shadow: 0 2px 0 rgba(40, 10, 40, 0.55);
+}
+#hud[hidden] { display: none; }
+
+.stat { display: flex; flex-direction: column; font-size: 30px; font-weight: 800; font-style: italic; font-variant-numeric: tabular-nums; }
+.stat.right { margin-left: auto; flex-direction: row; align-items: baseline; gap: 6px; font-size: 40px; }
+.label { font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.8; font-style: normal; }
+
+#nitro {
+  position: fixed;
+  left: 50%;
+  bottom: 22px;
+  width: min(360px, 60vw);
+  height: 14px;
+  transform: translateX(-50%) skewX(-18deg);
+  border: 2px solid var(--ink);
+  background: rgba(30, 10, 40, 0.4);
+}
+#nitro-fill { height: 100%; width: 100%; background: linear-gradient(90deg, var(--cool), #b4f6ff); transform-origin: left; }
+#nitro .label { position: absolute; top: -20px; left: 0; transform: skewX(18deg); }
+#nitro.active #nitro-fill { background: linear-gradient(90deg, var(--hot), #ffd36e); }
+
+.screen {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: radial-gradient(ellipse at center, rgba(20, 5, 30, 0.35), rgba(20, 5, 30, 0.75));
+  transition: opacity 0.25s;
+}
+.screen.hidden { opacity: 0; pointer-events: none; }
+
+h1 {
+  margin: 0;
+  font-size: clamp(48px, 11vw, 128px);
+  font-style: italic;
+  font-weight: 900;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: #ffd36e;
+  text-shadow: 4px 4px 0 var(--hot), 8px 8px 0 #3a1650;
+}
+h1 span { display: block; color: var(--cool); }
+
+#screen-text { font-size: 22px; font-weight: 700; margin: 28px 0 6px; white-space: pre-line; }
+.hint { font-size: 15px; opacity: 0.85; max-width: 520px; line-height: 1.5; white-space: pre-line; }
+kbd {
+  display: inline-block; padding: 1px 7px; border: 1px solid rgba(255, 246, 232, 0.6); border-radius: 4px;
+  font-family: inherit; font-size: 13px; background: rgba(255, 255, 255, 0.08);
+}
+
+#popups { position: fixed; inset: 0; pointer-events: none; }
+.popup {
+  position: absolute;
+  left: 50%;
+  top: 46%;
+  transform: translate(-50%, 0);
+  font-size: 28px;
+  font-weight: 900;
+  font-style: italic;
+  color: #ffd36e;
+  text-shadow: 3px 3px 0 var(--hot);
+  animation: rise 0.9s ease-out forwards;
+}
+@keyframes rise {
+  0% { opacity: 0; transform: translate(-50%, 20px) scale(0.6); }
+  15% { opacity: 1; transform: translate(-50%, 0) scale(1.15); }
+  30% { transform: translate(-50%, -6px) scale(1); }
+  100% { opacity: 0; transform: translate(-50%, -70px) scale(1); }
+}
+
+.back {
+  position: fixed; right: 16px; bottom: 14px; color: var(--ink); opacity: 0.7;
+  font-size: 13px; text-decoration: none;
+}
+.back:hover { opacity: 1; }
